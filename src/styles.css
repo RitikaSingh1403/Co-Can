@@ -1,0 +1,424 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  padding: 12px 20px;
+  background-color: #252526;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #4ec9b0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo::before {
+  content: "💻";
+  font-size: 1.2rem;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+button:hover {
+  background-color: #0062a3;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.split-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.resizer {
+  width: 8px;
+  background-color: #2d2d30;
+  cursor: col-resize;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.resizer:hover {
+  background-color: #007acc;
+}
+
+.resizer::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  right: 2px;
+  height: 30px;
+  background-color: #007acc;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.resizer:hover::after {
+  opacity: 0.5;
+}
+
+.excalidraw-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* Editor Container Styles */
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #1e1e1e;
+}
+
+.editor-toolbar {
+  padding: 12px;
+  background-color: #2d2d30;
+  border-bottom: 1px solid #3e3e42;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.language-select {
+  padding: 8px 12px;
+  background-color: #3e3e42;
+  color: #d4d4d4;
+  border: 1px solid #007acc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.language-select:hover {
+  background-color: #454545;
+  border-color: #0090ff;
+}
+
+.language-select:focus {
+  outline: none;
+  border-color: #0090ff;
+  box-shadow: 0 0 0 2px rgba(0, 146, 255, 0.3);
+}
+
+.run-button {
+  padding: 8px 16px;
+  background: linear-gradient(to bottom, #0e639c, #007acc);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.run-button::before {
+  content: "▶";
+  font-size: 12px;
+}
+
+.run-button:hover {
+  background: linear-gradient(to bottom, #1177bb, #0086e6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.run-button:disabled {
+  background: #5a5a5a;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.clear-button {
+  padding: 8px 16px;
+  background-color: #5a5a5a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.clear-button::before {
+  content: "🗑️";
+  font-size: 12px;
+}
+
+.clear-button:hover {
+  background-color: #707070;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.monaco-container {
+  height: 60%;
+  width: 100%;
+  border-bottom: 1px solid #3e3e42;
+}
+
+/* Remove white box from Monaco Editor */
+.monaco-editor, .monaco-editor-background, .monaco-editor .inputarea.ime-input {
+  background-color: #1e1e1e !important;
+}
+
+.monaco-editor .margin {
+  background-color: #1e1e1e !important;
+}
+
+.output-container {
+  height: 40%;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+}
+
+.output-header {
+  padding: 10px 15px;
+  background-color: #2d2d30;
+  color: #cccccc;
+  font-weight: 500;
+  border-bottom: 1px solid #3e3e42;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.output-header::before {
+  content: "📋";
+  font-size: 14px;
+}
+
+.output-content {
+  flex: 1;
+  padding: 15px;
+  overflow: auto;
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  background-color: #1e1e1e;
+}
+
+.output-content pre {
+  margin: 0;
+}
+
+/* Scrollbar styling */
+.output-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.output-content::-webkit-scrollbar-track {
+  background: #252526;
+}
+
+.output-content::-webkit-scrollbar-thumb {
+  background: #424245;
+  border-radius: 5px;
+}
+
+.output-content::-webkit-scrollbar-thumb:hover {
+  background: #4e4e51;
+}
+
+/* Code syntax highlighting in output */
+.output-content .success {
+  color: #4ec9b0;
+}
+
+.output-content .error {
+  color: #f44747;
+}
+
+.output-content .info {
+  color: #9cdcfe;
+}
+
+/* Animation for running state */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.running {
+  animation: pulse 1.5s infinite;
+}
+/* Backend status styles 
+.backend-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 15px;
+}
+
+.status-indicator {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-indicator.connected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-indicator.error {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-indicator.checking {
+  background-color: #ff9800;
+  color: white;
+}
+
+.retry-button {
+  padding: 4px 8px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background-color: #f57c00;
+}
+
+.backend-warning {
+  font-size: 12px;
+  color: #ff9800;
+  margin-left: 10px;
+  font-style: italic;
+}*/
+/* Backend status dot styles */
+.backend-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 15px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.connected {
+  background-color: #4CAF50; /* Green for connected */
+  box-shadow: 0 0 5px #4CAF50;
+}
+
+.status-dot.error {
+  background-color: #F44336; /* Red for error/offline */
+  box-shadow: 0 0 5px #F44336;
+}
+
+.status-dot.checking {
+  background-color: #FFC107; /* Yellow/orange for checking */
+  box-shadow: 0 0 5px #FFC107;
+  animation: pulse 1.5s infinite;
+}
+
+.status-dot.unknown {
+  background-color: #FFFFFF; /* White for unknown/crash */
+  box-shadow: 0 0 5px #FFFFFF;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.retry-button {
+  padding: 4px 8px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background-color: #f57c00;
+}
+
+.backend-warning {
+  font-size: 12px;
+  color: #ff9800;
+  margin-left: 10px;
+  font-style: italic;
+}
+
+/* Disabled state for editor */
+.monaco-editor.read-only .monaco-editor-background {
+  background-color: #2a2a2a !important;
+}
