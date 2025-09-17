@@ -1,6 +1,6 @@
 # 🌟 Co-Can  
 
-*Code • Visualize • Learn*  
+*Think, Code, Draw, Learn* 👩‍💻🪄
 
 Co-Can is a learning tool that brings *Excalidraw’s diagramming power* and *Monaco Editor’s coding experience* together, side-by-side.
 
