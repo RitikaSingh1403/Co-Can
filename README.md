@@ -26,7 +26,7 @@ That’s why *Co-Can* was created — a platform where you can:
 
 - 🖊 *Dual panels*: Code editor (Monaco) + Visual diagramming (Excalidraw) side by side.  
 - 📂 *Import & export support*: Save and reuse your code easily.  
-- 🚀 *Future roadmap*: Planned live collaboration feature for real-time coding + drawing with others.  
+- 🚀 *Future roadmap*: Planned live collaboration feature for real-time coding + drawing with others along with syntax dictionary feature.
 
 
 
